@@ -58,32 +58,26 @@ public class ExampleInstrumentedTest {
             Thread.sleep(5000);
 
         //Username field and type text
-        ViewInteraction fieldUsername = onView(allOf(withId(R.id.edt_username), childAtPosition(childAtPosition(
-                withClassName(is("android.support.design.widget.TextInputLayout")),
-                0), 0), isDisplayed()));
+        ViewInteraction fieldUsername = onView(withId(R.id.edt_username));
         fieldUsername.perform(click());
         fieldUsername.perform(typeText(username), closeSoftKeyboard());
 
         //Password field and type text
-        ViewInteraction fieldPswd = onView(allOf(withId(R.id.edt_password), childAtPosition(childAtPosition(
-                withClassName(is("android.support.design.widget.TextInputLayout")),
-                0), 0), isDisplayed()));
+        ViewInteraction fieldPswd = onView(withId(R.id.edt_password));
         fieldPswd.perform(typeText("video1"), closeSoftKeyboard());
 
         //Find login button and click it
-        ViewInteraction loginBtn = onView(allOf(withId(R.id.btn_login), withText("Login"),
-                childAtPosition(
-                        childAtPosition(withId(android.R.id.content), 0), 2), isDisplayed()));
+        ViewInteraction loginBtn = onView(allOf(withId(R.id.btn_login), withText("Login")));
         loginBtn.perform(click());
 
         Thread.sleep(5000);
 
         //Taxi part
         //Find search field and text "sa"
-        ViewInteraction fieldSearch = onView(
-                allOf(withId(R.id.textSearch),
-                        childAtPosition(allOf(withId(R.id.searchContainer),childAtPosition(withClassName(is("android.support.design.widget.CoordinatorLayout")),
-                                                1)),0),isDisplayed()));
+        ViewInteraction fieldSearch = onView(withId(R.id.textSearch));
+
+       /*         childAtPosition(allOf(withId(R.id.searchContainer),childAtPosition(withClassName(is("android.support.design.widget.CoordinatorLayout")),
+                                                1)),0),isDisplayed()));*/
         fieldSearch.perform(typeText("sa"), closeSoftKeyboard());
 
         Thread.sleep(3000);
@@ -92,7 +86,7 @@ public class ExampleInstrumentedTest {
         ViewInteraction fieldTaxiName = onView(withText("Sarah Friedrich")).inRoot(isPlatformPopup()).check(matches(isDisplayed()));
                         fieldTaxiName.perform(click());
         //Click call button
-        ViewInteraction btnCall = onView(allOf(withId(R.id.fab),childAtPosition(childAtPosition(withId(android.R.id.content),0),2),isDisplayed()));
+        ViewInteraction btnCall = onView(withId(R.id.fab));
         btnCall.perform(click());
 
         Thread.sleep(3000);
