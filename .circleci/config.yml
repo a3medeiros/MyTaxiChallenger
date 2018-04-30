@@ -36,6 +36,11 @@ jobs:
             # unlock the emulator screen
             sleep 30
             adb shell input keyevent 82
+       - run:
+          name: Instrumentation testing
+          command: ./gradlew connectedCheck
+          environment:
+          TERM: dumb 
       - run:
           command: ./gradlew connectedAndroidTest
           name: Run EspressoTests
@@ -44,8 +49,4 @@ jobs:
           destination: reports
       - store_test_results:
           path: app/build/test-results
-         - run:
-          name: Instrumentation testing
-          command: ./gradlew connectedCheck
-          environment:
-            TERM: dumb
+      
