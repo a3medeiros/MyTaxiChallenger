@@ -36,6 +36,7 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.3.1'
     implementation 'com.github.bumptech.glide:okhttp3-integration:4.3.1'
     testImplementation 'junit:junit:4.12'
+    testImplementation 'com.github.tomakehurst:wiremock-standalone:2.17.0'
     androidTestImplementation 'com.android.support:support-annotations:27.1.1'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation ('com.android.support.test.espresso:espresso-core:3.0.1') {
