@@ -41,5 +41,6 @@ dependencies {
     androidTestImplementation ('com.android.support.test.espresso:espresso-core:3.0.1') {
         exclude group: 'javax.inject'
     }
+    androidTestImplementation 'com.github.tomakehurst:wiremock:2.6.0'
 
 }
