@@ -43,14 +43,14 @@ public class ExampleInstrumentedTest {
     @Rule
     public ActivityTestRule<MainActivity> mActivityTestRule = new ActivityTestRule<>(MainActivity.class);
 
-    @Test
+   /* @Test
     public void useAppContext() throws Exception {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
         assertEquals("com.mytaxi.android_demo", appContext.getPackageName());
     }
-
+*/
     @Test
     public void testLoginSearchAndCall() throws InterruptedException {
         String username = "whiteelephant261";
