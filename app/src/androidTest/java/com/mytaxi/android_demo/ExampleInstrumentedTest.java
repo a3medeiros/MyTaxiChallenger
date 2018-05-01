@@ -28,30 +28,30 @@ public class ExampleInstrumentedTest {
     @Rule
     public ActivityTestRule<MainActivity> mActivityTestRule = new ActivityTestRule<>(MainActivity.class);
 
-    @Test
-    public void useAppContext() throws Exception {
-        // Context of the app under test.
-        Context appContext = InstrumentationRegistry.getTargetContext();
-        assertEquals("com.mytaxi.android_demo", appContext.getPackageName());
-    }
-
-    public void clickWithIdAndTypeText(int id, String txt ){
+    private void clickWithIdAndTypeText(int id, String txt ){
        ViewInteraction typeField = onView(withId(id)).perform(click());
        typeField.perform(typeText(txt), closeSoftKeyboard());
     }
 
-    public void clickButtonWithId(int id) {
+    private void clickButtonWithId(int id) {
         ViewInteraction loginBtn = onView(withId(id));
-        this.clickS(loginBtn);
+        this.clickAction(loginBtn);
     }
 
-    public void selectDriverByName(String driverName){
+    private void selectDriverByName(String driverName){
         ViewInteraction fieldTaxiName = onView(withText(driverName)).inRoot(isPlatformPopup()).check(matches(isDisplayed()));
-        this.clickS(fieldTaxiName);
+        this.clickAction(fieldTaxiName);
     }
 
-    public void clickS(ViewInteraction view){
+    private void clickAction(ViewInteraction view){
        view.perform(click());
+    }
+
+    @Test
+    private void useAppContext() throws Exception {
+        // Context of the app under test.
+        Context appContext = InstrumentationRegistry.getTargetContext();
+        assertEquals("com.mytaxi.android_demo", appContext.getPackageName());
     }
 
     @Test
@@ -75,6 +75,7 @@ public class ExampleInstrumentedTest {
         this.clickWithIdAndTypeText(R.id.textSearch,"sa");
 
         Thread.sleep(3000);
+
         this.selectDriverByName("Sarah Friedrich");
 
         //Click call button
