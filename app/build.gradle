@@ -40,7 +40,9 @@ dependencies {
     testImplementation 'com.github.tomakehurst:wiremock-standalone:2.17.0'
     androidTestImplementation 'com.android.support:support-annotations:27.1.1'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation ('com.android.support.test.espresso:espresso-core:3.0.1') {
-        exclude group: 'javax.inject'
+    androidTestImplementation ('com.android.support.test.espresso:espresso-core:3.0.1')  {
+        exclude group: 'com.android.support','javax.inject', module: 'support-v4'
     }
+        exclude
+    
 }
