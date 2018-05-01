@@ -55,11 +55,10 @@ public class ExampleInstrumentedTest {
     public void testLoginSearchAndCall() throws InterruptedException {
         String username = "whiteelephant261";
 
-            Thread.sleep(5000);
+        Thread.sleep(5000);
 
         //Username field and type text
-        ViewInteraction fieldUsername = onView(withId(R.id.edt_username));
-        fieldUsername.perform(click());
+        ViewInteraction fieldUsername = onView(withId(R.id.edt_username)).perform(click());
         fieldUsername.perform(typeText(username), closeSoftKeyboard());
 
         //Password field and type text
@@ -75,16 +74,14 @@ public class ExampleInstrumentedTest {
         //Taxi part
         //Find search field and text "sa"
         ViewInteraction fieldSearch = onView(withId(R.id.textSearch));
-
-       /*         childAtPosition(allOf(withId(R.id.searchContainer),childAtPosition(withClassName(is("android.support.design.widget.CoordinatorLayout")),
-                                                1)),0),isDisplayed()));*/
         fieldSearch.perform(typeText("sa"), closeSoftKeyboard());
 
         Thread.sleep(3000);
 
         //Find in the screen and click the taxi with name "Sarah Friedrich"
         ViewInteraction fieldTaxiName = onView(withText("Sarah Friedrich")).inRoot(isPlatformPopup()).check(matches(isDisplayed()));
-                        fieldTaxiName.perform(click());
+        fieldTaxiName.perform(click());
+
         //Click call button
         ViewInteraction btnCall = onView(withId(R.id.fab));
         btnCall.perform(click());
