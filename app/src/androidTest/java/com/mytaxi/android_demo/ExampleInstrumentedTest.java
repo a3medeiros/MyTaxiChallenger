@@ -28,32 +28,12 @@ public class ExampleInstrumentedTest {
     @Rule
     public ActivityTestRule<MainActivity> mActivityTestRule = new ActivityTestRule<>(MainActivity.class);
 
-    private void clickWithIdAndTypeText(int id, String txt ){
-       ViewInteraction typeField = onView(withId(id)).perform(click());
-       typeField.perform(typeText(txt), closeSoftKeyboard());
-    }
-
-    private void clickButtonWithId(int id) {
-        ViewInteraction loginBtn = onView(withId(id));
-        this.clickAction(loginBtn);
-    }
-
-    private void selectDriverByName(String driverName){
-        ViewInteraction fieldTaxiName = onView(withText(driverName)).inRoot(isPlatformPopup()).check(matches(isDisplayed()));
-        this.clickAction(fieldTaxiName);
-    }
-
-    private void clickAction(ViewInteraction view){
-       view.perform(click());
-    }
-
     @Test
     private void useAppContext() throws Exception {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
         assertEquals("com.mytaxi.android_demo", appContext.getPackageName());
     }
-
     @Test
     public void testLoginSearchAndCall() throws InterruptedException {
 
@@ -87,4 +67,23 @@ public class ExampleInstrumentedTest {
         Context appContext = InstrumentationRegistry.getContext();
         assertNotEquals("com.mytaxi.android_demo", appContext.getPackageName());
     }
+    private void clickWithIdAndTypeText(int id, String txt ){
+        ViewInteraction typeField = onView(withId(id)).perform(click());
+        typeField.perform(typeText(txt), closeSoftKeyboard());
+    }
+
+    private void clickButtonWithId(int id) {
+        ViewInteraction loginBtn = onView(withId(id));
+        this.clickAction(loginBtn);
+    }
+
+    private void selectDriverByName(String driverName){
+        ViewInteraction fieldTaxiName = onView(withText(driverName)).inRoot(isPlatformPopup()).check(matches(isDisplayed()));
+        this.clickAction(fieldTaxiName);
+    }
+
+    void clickAction(ViewInteraction view){
+        view.perform(click());
+    }
 }
+
