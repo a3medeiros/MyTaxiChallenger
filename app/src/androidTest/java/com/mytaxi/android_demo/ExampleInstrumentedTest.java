@@ -34,6 +34,26 @@ public class ExampleInstrumentedTest {
         Context appContext = InstrumentationRegistry.getTargetContext();
         assertEquals("com.mytaxi.android_demo", appContext.getPackageName());
     }
+
+    public void clickWithIdAndTypeText(int id, String txt ){
+       ViewInteraction typeField = onView(withId(id)).perform(click());
+       typeField.perform(typeText(txt), closeSoftKeyboard());
+    }
+
+    public void clickButtonWithId(int id) {
+        ViewInteraction loginBtn = onView(withId(id));
+        this.clickS(loginBtn);
+    }
+
+    public void selectDriverByName(String driverName){
+        ViewInteraction fieldTaxiName = onView(withText(driverName)).inRoot(isPlatformPopup()).check(matches(isDisplayed()));
+        this.clickS(fieldTaxiName);
+    }
+
+    public void clickS(ViewInteraction view){
+       view.perform(click());
+    }
+
     @Test
     public void testLoginSearchAndCall() throws InterruptedException {
 
@@ -67,23 +87,4 @@ public class ExampleInstrumentedTest {
         Context appContext = InstrumentationRegistry.getContext();
         assertNotEquals("com.mytaxi.android_demo", appContext.getPackageName());
     }
-    public void clickWithIdAndTypeText(int id, String txt ){
-        ViewInteraction typeField = onView(withId(id)).perform(click());
-        typeField.perform(typeText(txt), closeSoftKeyboard());
-    }
-
-    public void clickButtonWithId(int id) {
-        ViewInteraction loginBtn = onView(withId(id));
-        this.clickAction(loginBtn);
-    }
-
-    public void selectDriverByName(String driverName){
-        ViewInteraction fieldTaxiName = onView(withText(driverName)).inRoot(isPlatformPopup()).check(matches(isDisplayed()));
-        this.clickAction(fieldTaxiName);
-    }
-
-    public void clickAction(ViewInteraction view){
-        view.perform(click());
-    }
 }
-
