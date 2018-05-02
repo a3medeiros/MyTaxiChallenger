@@ -29,7 +29,7 @@ public class ExampleInstrumentedTest {
     public ActivityTestRule<MainActivity> mActivityTestRule = new ActivityTestRule<>(MainActivity.class);
 
     @Test
-    private void useAppContext() throws Exception {
+    public void useAppContext() throws Exception {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
         assertEquals("com.mytaxi.android_demo", appContext.getPackageName());
@@ -75,7 +75,6 @@ public class ExampleInstrumentedTest {
         this.clickWithIdAndTypeText(R.id.textSearch,"sa");
 
         Thread.sleep(3000);
-
         this.selectDriverByName("Sarah Friedrich");
 
         //Click call button
