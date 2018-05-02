@@ -67,22 +67,22 @@ public class ExampleInstrumentedTest {
         Context appContext = InstrumentationRegistry.getContext();
         assertNotEquals("com.mytaxi.android_demo", appContext.getPackageName());
     }
-    private void clickWithIdAndTypeText(int id, String txt ){
+    public void clickWithIdAndTypeText(int id, String txt ){
         ViewInteraction typeField = onView(withId(id)).perform(click());
         typeField.perform(typeText(txt), closeSoftKeyboard());
     }
 
-    private void clickButtonWithId(int id) {
+    public void clickButtonWithId(int id) {
         ViewInteraction loginBtn = onView(withId(id));
         this.clickAction(loginBtn);
     }
 
-    private void selectDriverByName(String driverName){
+    public void selectDriverByName(String driverName){
         ViewInteraction fieldTaxiName = onView(withText(driverName)).inRoot(isPlatformPopup()).check(matches(isDisplayed()));
         this.clickAction(fieldTaxiName);
     }
 
-    void clickAction(ViewInteraction view){
+    public void clickAction(ViewInteraction view){
         view.perform(click());
     }
 }
